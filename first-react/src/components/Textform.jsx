@@ -1,21 +1,54 @@
 import React,{useState}  from 'react'
 
 export default function Textform(props) {
+  const [text,setText]=useState('Enter Text here');
+  const [isSpeaking,setIsSpeaking]=useState(false);
     const HandleUpClick=()=>{
        
         let newtext=text.toUpperCase();
          setText(newtext);
     }
-    const HandleLowClick=()=>{
+    const HandleClearText=()=>{
        
-        let newtext=text.toLowerCase();
+        let newtext="";
          setText(newtext);
     }
-     const HandleOnChange=()=>{
+    const HandleEmailText=()=>{
+       
+        const emailRegex= /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+        const foundEmail=text.match(emailRegex);
+        if(foundEmail)
+          setText("Found Emails: "+foundEmail.join(", "));
+        else
+         setText("No Email found in the text");
+    }
+  let  listen=true;
+    
+    const HandleSpeak=()=>{
+      if(text.trim()==""){
+        setText("Please Enter Some Text ");
+        return;
+      }
+      if(listen==false){
+        setText("Speech Is stopped ");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const speech=new SpeechSynthesisUtterance();
+      speech.text=text;
+
+      window.speechSynthesis.speak(speech);
+     // setText(listen)
+  }
+ const HandleStopListening=()=>{
+    window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+  }
+     const HandleOnChange=(event)=>{
        
        setText(event.target.value);
     }
-    const [text,setText]=useState('Enter Text here');
+    
     
   return (
     <>
@@ -27,7 +60,10 @@ export default function Textform(props) {
 </div>
 
 <button  className="btn btn-success mx-1" onClick={HandleUpClick }>Convert To Upper Case</button>
-<button className="btn btn-success mx-1" onClick={HandleLowClick }>Convert To Lower Case</button>
+<button className="btn btn-success mx-1" onClick={HandleClearText }>Clear Text</button>
+<button className="btn btn-success mx-1" onClick={HandleEmailText }> Email In text</button>
+<button className="btn btn-success mx-1" onClick={HandleSpeak}>Listen to Text</button>
+<button className="btn btn-success mx-1" onClick={HandleStopListening}>Stop Listening to Text</button>
     </div>
      <div className="container2 my-3">
           <h2>Your Text Summary</h2>
