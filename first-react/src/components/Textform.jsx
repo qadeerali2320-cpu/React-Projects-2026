@@ -75,7 +75,14 @@ export default function Textform(props) {
 </div>
 
 <button  className="btn btn-success mx-1" onClick={HandleUpClick }>Convert To Upper Case</button>
+
+<button className="btn btn-success mx-1" onClick={HandleClearText }>Clear Text</button>
+<button className="btn btn-success mx-1" onClick={HandleEmailText }> Email In text</button>
+<button className="btn btn-success mx-1" onClick={HandleSpeak}>Listen to Text</button>
+<button className="btn btn-success mx-1" onClick={HandleStopListening}>Stop Listening to Text</button>
+
 <button className="btn btn-success mx-1" onClick={HandleLowClick }>Convert To Lower Case</button>
+
     </div>
      <div className="container2 my-3">
           <h2>Your Text Summary</h2>
