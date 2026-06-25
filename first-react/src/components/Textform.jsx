@@ -47,10 +47,7 @@ export default function Textform(props) {
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
   }
-     const HandleOnChange=(event)=>{
-       
-       setText(event.target.value);
-    }
+   
     
 
     const HandleLowClick=()=>{
@@ -62,7 +59,7 @@ export default function Textform(props) {
        
        setText(event.target.value);
     }
-    const [text,setText]=useState('Enter Text here');
+   
 
     
   return (
