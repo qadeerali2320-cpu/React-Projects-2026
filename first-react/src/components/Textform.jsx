@@ -9,31 +9,40 @@
         
           let newtext=text.toUpperCase();
           setText(newtext);
+          props.showAlert("Successfully converted to upper case","success");
       }
 
       const HandleClearText=()=>{
         
           let newtext="";
           setText(newtext);
+          props.showAlert("Successfully clear the text","success");
       }
       const HandleEmailText=()=>{
         
           const emailRegex= /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
           const foundEmail=text.match(emailRegex);
-          if(foundEmail)
+          if(foundEmail){
             setText("Found Emails: "+foundEmail.join(", "));
-          else
+          props.showAlert("Successfully found the e-mail","success");
+          }
+          else{
           setText("No Email found in the text");
+          props.showAlert("No E-mail in the text","warning");
+          }
       }
     let  listen=true;
       
       const HandleSpeak=()=>{
         if(text.trim()==""){
           setText("Please Enter Some Text ");
+          props.setAlert("No text to listen","warning");
           return;
+
         }
         if(listen==false){
           setText("Speech Is stopped ");
+          props.setAlert("Speech is stopped","success");
           return;
         }
         window.speechSynthesis.cancel();
@@ -54,6 +63,7 @@
         
           let newtext=text.toLowerCase();
           setText(newtext);
+          props.setAlert("Successfully converted to lower case","success");
       }
       const HandleOnChange=(event)=>{
         
