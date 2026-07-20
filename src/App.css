@@ -49,28 +49,40 @@ body {
 #root {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 16px 16px 80px 16px;
 }
 
 /* ─── Navbar ─── */
 .navbar {
   border-radius: var(--radius) !important;
-  padding: 12px 24px !important;
+  padding: 10px 16px !important;
   box-shadow: var(--shadow);
-  margin-bottom: 32px !important;
+  margin-bottom: 16px !important;
   transition: background var(--transition), color var(--transition);
+  flex-wrap: wrap !important;
+}
+
+.navbar .container-fluid {
+  flex-wrap: wrap !important;
+  gap: 8px;
 }
 
 .navbar-brand {
   font-weight: 700 !important;
-  font-size: 1.35rem !important;
+  font-size: 1.15rem !important;
   letter-spacing: -0.5px;
+}
+
+.navbar-nav {
+  flex-direction: row !important;
+  gap: 4px;
 }
 
 .nav-link {
   font-weight: 500 !important;
-  padding: 8px 16px !important;
+  padding: 6px 12px !important;
   border-radius: 8px;
+  font-size: 0.9rem;
   transition: background var(--transition), color var(--transition);
 }
 
@@ -79,9 +91,24 @@ body {
   color: var(--accent) !important;
 }
 
-.nav-link.active {
-  background: var(--accent-bg);
-  color: var(--accent) !important;
+/* ─── Dark Mode Toggle - Fixed ─── */
+.form-check {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap;
+}
+
+.form-check-input {
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+.form-check-label {
+  font-size: 0.85rem !important;
+  margin: 0 !important;
 }
 
 /* ─── Cards & Containers ─── */
@@ -90,75 +117,81 @@ body {
 .Container {
   background: var(--bg-card);
   border-radius: var(--radius);
-  padding: 28px 32px;
+  padding: 20px 16px;
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
   transition: background var(--transition), border var(--transition), box-shadow var(--transition);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 /* ─── Typography ─── */
 h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 16px;
-  color: var(--text-primary);
-}
-
-h2 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.3px;
   margin-bottom: 12px;
   color: var(--text-primary);
 }
 
-h3 {
+h2 {
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.2px;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  margin-top: 12px;
+  margin-bottom: 6px;
   color: var(--text-primary);
 }
 
 p, label, .form-check-label {
   color: var(--text-primary);
+  font-size: 0.95rem;
 }
 
 /* ─── Textarea ─── */
 textarea.form-control {
   border-radius: 12px !important;
-  padding: 16px !important;
-  font-size: 1rem !important;
+  padding: 14px !important;
+  font-size: 0.95rem !important;
   font-family: 'Inter', monospace;
   background: var(--bg-primary) !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color);
   transition: border var(--transition), box-shadow var(--transition);
   resize: vertical;
-  min-height: 200px;
+  min-height: 140px;
+  max-height: 250px;
 }
 
 textarea.form-control:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-bg);
+  box-shadow: 0 0 0 3px var(--accent-bg);
   outline: none;
 }
 
-/* ─── Buttons ─── */
+/* ─── Buttons - Mobile Optimized ─── */
 .btn {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 8px 14px;
   border-radius: 10px;
   border: none;
   transition: all var(--transition);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  font-size: 0.85rem;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .btn-success {
@@ -170,6 +203,37 @@ textarea.form-control:focus {
   background: var(--accent-hover) !important;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgb(99 102 241 / 0.35);
+}
+
+/* ─── Button Group - Mobile Friendly ─── */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 6px 0;
+}
+
+.button-group .btn {
+  flex: 1 1 calc(50% - 6px);
+  min-width: 100px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+}
+
+/* ─── Summary / Stats - Compact ─── */
+.container2 p {
+  background: var(--bg-primary);
+  padding: 8px 14px;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.container2 p strong {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 /* ─── Accordion (About Page) ─── */
@@ -187,11 +251,12 @@ textarea.form-control:focus {
 
 .accordion-button {
   font-weight: 600 !important;
-  padding: 18px 24px !important;
+  padding: 14px 16px !important;
   background: var(--bg-card) !important;
   color: var(--text-primary) !important;
   border: none !important;
   box-shadow: none !important;
+  font-size: 0.9rem !important;
 }
 
 .accordion-button:not(.collapsed) {
@@ -205,35 +270,22 @@ textarea.form-control:focus {
 }
 
 .accordion-body {
-  padding: 20px 24px !important;
+  padding: 14px 16px !important;
   background: var(--bg-primary) !important;
   color: var(--text-secondary) !important;
   border-top: 1px solid var(--border-color) !important;
-}
-
-/* ─── Summary / Stats ─── */
-.container2 p {
-  background: var(--bg-primary);
-  padding: 10px 16px;
-  border-radius: 8px;
-  border-left: 4px solid var(--accent);
-  margin-bottom: 8px;
-  color: var(--text-primary);
-}
-
-.container2 p strong {
-  color: var(--accent);
-  font-weight: 700;
+  font-size: 0.9rem !important;
 }
 
 /* ─── Alerts ─── */
 .alert {
   border-radius: 12px !important;
-  padding: 14px 20px !important;
+  padding: 10px 16px !important;
   font-weight: 500;
   border: none !important;
   box-shadow: var(--shadow);
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
 }
 
 .alert-success {
@@ -310,85 +362,227 @@ textarea.form-control:focus {
   border-left-color: #818cf8 !important;
 }
 
-/* ─── About Page Heading ─── */
 [data-theme="dark"] .accordion h1 {
   color: #f1f5f9 !important;
 }
 
-/* ─── Responsive (Mobile) ─── */
+/* ─── 📱 Mobile Optimization ─── */
 @media (max-width: 768px) {
   #root {
-    padding: 12px 16px;
+    padding: 10px 10px 60px 10px;
+  }
+
+  /* ─── Navbar Mobile ─── */
+  .navbar {
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .navbar .container-fluid {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    align-items: center !important;
+  }
+
+  .navbar-brand {
+    font-size: 1rem !important;
+    margin-right: 8px !important;
+  }
+
+  .navbar-nav {
+    flex-direction: row !important;
+    gap: 2px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav-link {
+    padding: 4px 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* ─── Dark Mode Toggle - Fixed on Mobile ─── */
+  .form-check {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    margin-left: auto !important;
+    padding: 0 !important;
+    flex-shrink: 0;
+  }
+
+  .form-check-input {
+    width: 32px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+
+  .form-check-label {
+    font-size: 0.7rem !important;
+    white-space: nowrap;
+  }
+
+  /* ─── Cards ─── */
+  .container,
+  .container2,
+  .Container {
+    padding: 14px 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+
+  /* ─── Textarea ─── */
+  textarea.form-control {
+    min-height: 100px;
+    max-height: 180px;
+    padding: 10px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* ─── Typography ─── */
+  h1 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  p, label {
+    font-size: 0.85rem;
+  }
+
+  /* ─── Buttons - Mobile Optimized ─── */
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 8px 0;
+  }
+
+  .button-group .btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 8px 6px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  /* Full-width buttons on very small screens */
+  .button-group .btn:nth-child(1):nth-last-child(1) {
+    grid-column: 1 / -1;
+  }
+
+  /* ─── Summary ─── */
+  .container2 p {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  /* ─── Accordion ─── */
+  .accordion-button {
+    padding: 10px 14px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .accordion-body {
+    padding: 10px 14px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .accordion h1 {
+    font-size: 1.1rem !important;
+  }
+
+  /* ─── Alert ─── */
+  .alert {
+    padding: 8px 12px !important;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+}
+
+/* ─── Very Small Screens (below 400px) ─── */
+@media (max-width: 400px) {
+  #root {
+    padding: 6px 6px 50px 6px;
+  }
+
+  .navbar {
+    padding: 6px 8px !important;
+  }
+
+  .navbar-brand {
+    font-size: 0.85rem !important;
+  }
+
+  .nav-link {
+    padding: 3px 6px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .form-check-label {
+    font-size: 0.6rem !important;
+  }
+
+  .form-check-input {
+    width: 28px !important;
+    height: 14px !important;
+  }
+
+  .button-group {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .button-group .btn {
+    padding: 6px 4px;
+    font-size: 0.6rem;
+    border-radius: 6px;
   }
 
   .container,
   .container2,
   .Container {
-    padding: 20px 16px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   h2 {
-    font-size: 1.2rem;
-  }
-
-  .navbar {
-    padding: 10px 16px !important;
-  }
-
-  .navbar-brand {
-    font-size: 1.1rem !important;
-  }
-
-  .btn {
-    padding: 8px 14px;
     font-size: 0.9rem;
-    width: 100%;
-    justify-content: center;
-    margin: 4px 0 !important;
   }
 
   textarea.form-control {
-    min-height: 150px;
-    font-size: 0.95rem !important;
-  }
-
-  .accordion-button {
-    padding: 14px 16px !important;
-    font-size: 0.95rem !important;
-  }
-
-  .accordion-body {
-    padding: 16px !important;
-    font-size: 0.95rem !important;
-  }
-
-  .Container .btn-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .Container .btn-group .btn {
-    width: 100%;
-  }
-
-  .container2 p {
-    padding: 8px 12px;
-    font-size: 0.95rem;
-  }
-
-  .form-check {
-    margin-top: 10px;
+    min-height: 80px;
+    max-height: 140px;
+    padding: 8px !important;
+    font-size: 0.8rem !important;
   }
 }
 
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -411,4 +605,26 @@ textarea.form-control:focus {
 
 .bg-accent-soft {
   background: var(--accent-bg);
+}
+
+/* ─── Fix for Navbar Collapse ─── */
+.navbar-toggler {
+  border: none !important;
+  padding: 4px 8px !important;
+  font-size: 1rem !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+/* ─── Center content on mobile ─── */
+.text-center-mobile {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .text-center-mobile {
+    text-align: center !important;
+  }
 }

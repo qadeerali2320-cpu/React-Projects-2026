@@ -14,13 +14,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-// export default function App() {
-//   return (
-//     <div>
 
-//     </div>
-//   )
-// }
 
 
 function App() {
@@ -39,22 +33,21 @@ function App() {
   }
 
 
-  const toggleMode = () => {
-    if (mode === 'light') {
-      setMode('dark');
-      document.body.style.backgroundColor = '#042743';
-      document.body.style.color = 'white';
-      showAlert("Dark mode has successfully enabled", "success");
-    }
-    else {
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-      document.body.style.color = 'black';
-      showAlert("Dark mode has successfully disabled", "success");
-
-    }
+const toggleMode = () => {
+  if (mode === 'light') {
+    setMode('dark');
+    document.body.style.background = 'linear-gradient(145deg, #0f172a 0%, #1e293b 100%)';
+    document.body.style.color = '#f1f5f9';
+    document.documentElement.setAttribute('data-theme', 'dark');
+    showAlert("Dark mode enabled", "success");
+  } else {
+    setMode('light');
+    document.body.style.background = 'linear-gradient(145deg, #f0f4f8 0%, #ffffff 100%)';
+    document.body.style.color = '#0f172a';
+    document.documentElement.removeAttribute('data-theme');
+    showAlert("Light mode disabled", "success");
   }
-
+};
 
 
 
