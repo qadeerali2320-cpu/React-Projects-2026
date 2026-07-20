@@ -6,7 +6,7 @@ export default function About(props) {
     let mystyle={
         color:props.mode==='dark'?'white':'black',
         backgroundColor:props.mode==='dark'?'#333':'white',
-         border: props.mode === 'dark' ? '1px solid red' : '1px solid black'  
+         border: props.mode === 'dark' ? '1px solid gray' : '1px solid black'  
 
     }
      let buttonStyle = {
@@ -58,7 +58,7 @@ export default function About(props) {
 
     return (
 
-        <div className="accordion" id="accordionExample" style={mystyle}>
+        <div className="accordion" id="accordionExample" >
             <h1>About Us</h1>
             <div className="accordion-item" style={mystyle}>
                 <h2 className="accordion-header">
